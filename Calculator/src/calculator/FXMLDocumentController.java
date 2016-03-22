@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -20,7 +22,16 @@ public class FXMLDocumentController implements Initializable {
   
     @FXML
     private TextField textField;
+    
+    @FXML
     private Button maximizeButton;
+    
+    @FXML
+    private ListView listView;
+    
+    @FXML
+    private AnchorPane anchorPane;
+    
     private Processor processor = new Processor();
     boolean calculationDone = false;
     
@@ -179,7 +190,24 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void buttonMaximize(){
-        maximizeButton.setText("<");
+        if(maximizeButton.getText().equals(">")){
+            maximizeButton.setText("<");
+            listView.setVisible(false);
+        }
+        else{
+            maximizeButton.setText(">");
+            listView.setVisible(true);
+        }
+    }
+    
+    @FXML
+    private void save(){
+        
+    }
+    
+    @FXML
+    private void load(){
+        
     }
     
     @Override

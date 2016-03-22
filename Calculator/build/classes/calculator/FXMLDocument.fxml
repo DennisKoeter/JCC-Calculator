@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="348.0" prefWidth="232.0" style="-fx-background-color: #07164A; -fx-background-radius: 20; -fx-padding: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="348.0" prefWidth="226.0" style="-fx-background-color: #07164A; -fx-background-radius: 20; -fx-padding: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.FXMLDocumentController">
    <children>
       <HBox layoutX="21.0" layoutY="137.0" prefHeight="40.0" prefWidth="205.0" spacing="15.0" style="-fx-background-color: #07164A;">
          <children>
@@ -178,8 +178,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ListView layoutX="256.0" layoutY="12.0" prefHeight="285.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="306.0" layoutY="307.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
+      <ListView fx:id="listView" layoutX="256.0" layoutY="12.0" prefHeight="285.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="loadButton" layoutX="306.0" layoutY="307.0" mnemonicParsing="false" onAction="#load" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -187,7 +187,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="389.0" layoutY="307.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
+      <Button fx:id="saveButton" layoutX="389.0" layoutY="307.0" mnemonicParsing="false" onAction="#save" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
