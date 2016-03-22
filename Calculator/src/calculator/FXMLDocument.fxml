@@ -156,14 +156,12 @@
       </HBox>
       <VBox layoutX="21.0" layoutY="14.0" prefHeight="73.0" prefWidth="205.0" spacing="10.0">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#exitCalculator" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: red; -fx-background-radius: 10; -fx-padding: 0px;" />
-                  <Button fx:id="maximizeButton" mnemonicParsing="false" onAction="#buttonMaximize" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: teal; -fx-background-radius: 10; -fx-padding: 0px;" text="&gt;">
+                  <Button mnemonicParsing="false" onAction="#exitCalculator" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: red; -fx-background-radius: 10; -fx-padding: 0px;">
                      <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
+                        <Font size="1.0" />
+                     </font></Button>
                </children>
             </HBox>
             <TextField id="outputField" fx:id="textField" alignment="CENTER_RIGHT" opacity="0.29" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: green;">
@@ -178,8 +176,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ListView fx:id="listView" layoutX="256.0" layoutY="12.0" prefHeight="285.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
-      <Button fx:id="loadButton" layoutX="306.0" layoutY="307.0" mnemonicParsing="false" onAction="#load" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
+      <ListView fx:id="listView" layoutX="256.0" layoutY="12.0" prefHeight="283.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="loadButton" layoutX="327.0" layoutY="307.0" mnemonicParsing="false" onAction="#load" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -187,7 +185,15 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="saveButton" layoutX="389.0" layoutY="307.0" mnemonicParsing="false" onAction="#save" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
+      <Button fx:id="saveButton" layoutX="397.0" layoutY="307.0" mnemonicParsing="false" onAction="#save" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearButton" layoutX="256.0" layoutY="307.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 5 2 2 20;" text="Clear" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>

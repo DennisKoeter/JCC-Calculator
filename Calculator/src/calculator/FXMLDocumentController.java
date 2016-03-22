@@ -7,6 +7,8 @@ package calculator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,17 +24,11 @@ public class FXMLDocumentController implements Initializable {
   
     @FXML
     private TextField textField;
-    
     @FXML
-    private Button maximizeButton;
-    
-    @FXML
-    private ListView listView;
-    
-    @FXML
-    private AnchorPane anchorPane;
+    private ListView listView;  
     
     private Processor processor = new Processor();
+    private ObservableList list = FXCollections.observableArrayList();
     boolean calculationDone = false;
     
     @FXML
@@ -180,24 +176,14 @@ public class FXMLDocumentController implements Initializable {
         calculationDone = true;
         String calculation = textField.getText();
         String answer = processor.calculateString(calculation);
+        list.add(calculation + "=" + answer);
         textField.setText(answer);
+        listView.setItems(list);
     }
     
     @FXML
     private void buttonClear(){
         textField.setText("");
-    }
-    
-    @FXML
-    private void buttonMaximize(){
-        if(maximizeButton.getText().equals(">")){
-            maximizeButton.setText("<");
-            listView.setVisible(false);
-        }
-        else{
-            maximizeButton.setText(">");
-            listView.setVisible(true);
-        }
     }
     
     @FXML
@@ -208,6 +194,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void load(){
         
+    }
+    
+    @FXML
+    private void clear(){
+        list.clear();
+        listView.setItems(list);
     }
     
     @Override

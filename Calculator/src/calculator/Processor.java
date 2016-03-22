@@ -7,6 +7,8 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -17,7 +19,6 @@ public class Processor {
     List<Double> numbers;
     
     public Processor(){
-        
     }
     
     public String calculateString(String input){
