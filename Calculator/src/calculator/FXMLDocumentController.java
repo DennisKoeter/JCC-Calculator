@@ -6,15 +6,12 @@
 package calculator;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -28,7 +25,6 @@ public class FXMLDocumentController implements Initializable {
     private ListView listView;  
     
     private Processor processor = new Processor();
-    private ObservableList list = FXCollections.observableArrayList();
     boolean calculationDone = false;
     
     @FXML
@@ -163,6 +159,24 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
+    private void buttonPower(){
+        if(calculationDone){
+            textField.setText("");
+            calculationDone = false;
+        }
+        textField.setText(textField.getText() + "^");
+    }
+    
+    @FXML
+    private void buttonRoot(){
+        if(calculationDone){
+            textField.setText("");
+            calculationDone = false;
+        }
+        textField.setText(textField.getText() + "v");
+    }
+    
+    @FXML
     private void buttonDot(){
         if(calculationDone){
             textField.setText("");
@@ -176,9 +190,11 @@ public class FXMLDocumentController implements Initializable {
         calculationDone = true;
         String calculation = textField.getText();
         String answer = processor.calculateString(calculation);
-        list.add(calculation + "=" + answer);
+        double tempAnswer = Double.parseDouble(answer);
+        DecimalFormat df = new DecimalFormat("####################.######");
+        answer = df.format(tempAnswer);
         textField.setText(answer);
-        listView.setItems(list);
+        listView.setItems(processor.returnList());
     }
     
     @FXML
@@ -198,8 +214,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void clear(){
-        list.clear();
-        listView.setItems(list);
+        processor.clearList();
+        listView.setItems(null);
     }
     
     @Override
