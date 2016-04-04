@@ -5,6 +5,8 @@
  */
 package calculator;
 
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -247,14 +249,17 @@ public class FXMLDocumentController implements Initializable {
         // ----- FILE PICKER HIER ----- //
         ///                                      ///
         // -------------------------- //
-        JFileChooser chooser;
-         chooser = new JFileChooser(); 
+      //  FileDialog dialog = new FileDialog();
+          FileDialog fileDialog = new FileDialog(new Frame(), "Save", FileDialog.SAVE);
+        fileDialog.setVisible(true);
+       // JFileChooser chooser;
+        // chooser = new JFileChooser(); 
         //chooser.setCurrentDirectory(new java.io.File("."));
-         chooser.setDialogTitle("save");
-         chooser.showSaveDialog(chooser);
+       //  chooser.setDialogTitle("save");
+        // chooser.showSaveDialog(chooser);
         
         try {
-            PrintStream fileStream = new PrintStream(new File(chooser.getSelectedFile().toString() + ".txt"));
+            PrintStream fileStream = new PrintStream(new File(fileDialog.getDirectory() + fileDialog.getFile() + ".txt"));
             for(Object s : calculations){
                 if(s.toString().contains("-----")){
                     fileStream.println("-----");
