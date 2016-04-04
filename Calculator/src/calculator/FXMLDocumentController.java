@@ -32,6 +32,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -246,9 +247,14 @@ public class FXMLDocumentController implements Initializable {
         // ----- FILE PICKER HIER ----- //
         ///                                      ///
         // -------------------------- //
+        JFileChooser chooser;
+         chooser = new JFileChooser(); 
+        //chooser.setCurrentDirectory(new java.io.File("."));
+         chooser.setDialogTitle("save");
+         chooser.showSaveDialog(chooser);
         
         try {
-            PrintStream fileStream = new PrintStream(new File("calc.txt"));
+            PrintStream fileStream = new PrintStream(new File(chooser.getSelectedFile().toString() + ".txt"));
             for(Object s : calculations){
                 if(s.toString().contains("-----")){
                     fileStream.println("-----");
@@ -269,18 +275,19 @@ public class FXMLDocumentController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(null);
 
         if (selectedFile != null) {
-            System.out.println("File selected: " + selectedFile.getName());
+            System.out.println("File selected: " + selectedFile.getAbsolutePath() + selectedFile.getName());
         } else {
            System.out.println("File selection cancelled.");
         }
         
         String fileName = selectedFile.getName();
+        String Path = selectedFile.getAbsolutePath().toString();
         String line = null;
         ArrayList<String> list = new ArrayList<>();
         
         try {
             FileReader fileReader = 
-                new FileReader(fileName);
+                new FileReader(Path);
 
             BufferedReader bufferedReader = 
                 new BufferedReader(fileReader);
