@@ -5,6 +5,7 @@
  */
 package calculator;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -15,17 +16,33 @@ import javafx.collections.ObservableList;
  * @author Dennis
  */
 public class Processor {
-    List<Character> signs;
-    List<Double> numbers;
+    private List<Character> signs;
+    private List<Double> numbers;
+    private ObservableList<String> oList;
+    DecimalFormat df;
     
     public Processor(){
+        oList = FXCollections.observableArrayList();
+        df = new DecimalFormat("####################.####################");
+    }
+    
+    public ObservableList returnList(){
+        oList.add("----------------------------------------------------------------------");
+        return oList;
+    }
+    
+    public void clearList(){
+        oList.clear();
     }
     
     public String calculateString(String input){
+        oList.add(input);
             int plus = 0;
             int minus = 0;
             int multiply = 0;
             int divide = 0;
+            int root = 0;
+            int power = 0;
             int next = -1;
             String temp = "";
             String before = "";
@@ -48,8 +65,15 @@ public class Processor {
                 minus = signs.indexOf('-');
                 multiply = signs.indexOf('x');
                 divide = signs.indexOf('/');
+                root = signs.indexOf('v');
+                power = signs.indexOf('^');
 
-                if ((multiply != -1 && divide != -1) || multiply != -1 || divide != -1)
+                if ((root != -1 && power != -1) || root != -1 || power != -1)
+                {
+                    if (root > -1 && power > -1) next = Math.min(root, power);
+                    else next = Math.max(root, power);
+                }
+                else if ((multiply != -1 && divide != -1) || multiply != -1 || divide != -1)
                 {
                     if (multiply > -1 && divide > -1) next = Math.min(multiply, divide);
                     else next = Math.max(multiply, divide);
@@ -60,16 +84,16 @@ public class Processor {
                     else next = Math.max(plus, minus);
                 }
                 
-                calculation = String.valueOf(numbers.get(next)) 
+                calculation = df.format(numbers.get(next)) 
                         + String.valueOf(signs.get(next)) 
-                        + String.valueOf(numbers.get(next + 1));
+                        + df.format(numbers.get(next + 1));
                 
-                temp = String.valueOf(compute(calculation));
+                temp = df.format(compute(calculation));
                 
                 before = "";
                 
                 for(int j = 0; j < next; j++){
-                    before += String.valueOf(numbers.get(j));
+                    before += df.format(numbers.get(j));
                     before += String.valueOf(signs.get(j));
                 }
 
@@ -79,7 +103,7 @@ public class Processor {
 
                     for (int k = next + 2; k < numbers.size(); k++)
                     {
-                        after += String.valueOf(numbers.get(k));
+                        after += df.format(numbers.get(k));
                         if (signs.size() > k) after += String.valueOf(signs.get(k));
                     }
                 }
@@ -90,6 +114,7 @@ public class Processor {
 
                 //cleaning up code for next iteration
                 temp = before + temp + after;
+                oList.add(temp);
 
                 signs = updateSigns(temp);
                 numbers = updateNumbers(temp, signs);
@@ -105,7 +130,7 @@ public class Processor {
     private List<Character> updateSigns(String input){
         signs = new ArrayList<Character>();
         for(Character c : input.toCharArray()){
-            if(c == '+' || c == '-' || c == '/' || c == 'x') signs.add(c);
+            if(c == '+' || c == '-' || c == '/' || c == 'x' || c == '^' || c == 'v') signs.add(c);
         }
         
         return signs;
@@ -130,6 +155,8 @@ public class Processor {
             if (input.contains("-")) answer = subtract(input);
             if (input.contains("x")) answer = multiply(input);
             if (input.contains("/")) answer = divide(input);
+            if (input.contains("v")) answer = root(input);
+            if (input.contains("^")) answer = power(input);
 
             return answer;
         }
@@ -156,5 +183,17 @@ public class Processor {
         {
             int divide = input.indexOf('/');
             return Double.parseDouble(input.substring(0, divide)) / Double.parseDouble(input.substring(divide + 1));
+        }
+        
+        private static double root(String input)
+        {
+            int root = input.indexOf('v');
+            return Math.pow(Double.parseDouble(input.substring(0, root)), 1 / Double.parseDouble(input.substring(root + 1)));
+        }
+        
+        private static double power(String input)
+        {
+            int power = input.indexOf('^');
+            return Math.pow(Double.parseDouble(input.substring(0, power)), Double.parseDouble(input.substring(power + 1)));
         }
 }

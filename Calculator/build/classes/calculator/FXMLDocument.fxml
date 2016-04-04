@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="348.0" prefWidth="226.0" style="-fx-background-color: #07164A; -fx-background-radius: 20; -fx-padding: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="355.0" prefWidth="763.0" style="-fx-background-color: #07164A; -fx-background-radius: 20; -fx-padding: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.FXMLDocumentController">
    <children>
-      <HBox layoutX="21.0" layoutY="137.0" prefHeight="40.0" prefWidth="205.0" spacing="15.0" style="-fx-background-color: #07164A;">
+      <HBox layoutX="21.0" layoutY="137.0" prefHeight="40.0" prefWidth="260.0" spacing="15.0" style="-fx-background-color: #07164A;">
          <children>
             <Button mnemonicParsing="false" onAction="#button7" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 20 2 2 2;" text="7">
                <font>
@@ -44,9 +44,17 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Button mnemonicParsing="false" onAction="#buttonRoot" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: orange;" text="√" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
-      <HBox layoutX="21.0" layoutY="187.0" prefHeight="40.0" prefWidth="205.0" spacing="15.0" style="-fx-background-color: #07164A;">
+      <HBox layoutX="21.0" layoutY="187.0" prefHeight="40.0" prefWidth="260.0" spacing="15.0" style="-fx-background-color: #07164A;">
          <children>
             <Button mnemonicParsing="false" onAction="#button4" prefHeight="410.0" prefWidth="40.0" text="4">
                <font>
@@ -80,9 +88,17 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Button mnemonicParsing="false" onAction="#buttonPower" prefHeight="410.0" prefWidth="40.0" style="-fx-background-color: orange;" text="xⁿ" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
-      <HBox layoutX="21.0" layoutY="237.0" prefHeight="40.0" prefWidth="205.0" spacing="15.0" style="-fx-background-color: #07164A;">
+      <HBox layoutX="21.0" layoutY="237.0" prefHeight="40.0" prefWidth="260.0" spacing="15.0" style="-fx-background-color: #07164A;">
          <children>
             <Button mnemonicParsing="false" onAction="#button1" prefHeight="410.0" prefWidth="40.0" text="1">
                <font>
@@ -116,9 +132,17 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Button mnemonicParsing="false" onAction="#buttonMinus" prefHeight="410.0" prefWidth="40.0" style="-fx-background-color: orange;" text="-" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
       </HBox>
-      <HBox layoutX="21.0" layoutY="287.0" prefHeight="40.0" prefWidth="205.0" spacing="15.0" style="-fx-background-color: #07164A;">
+      <HBox layoutX="21.0" layoutY="287.0" prefHeight="40.0" prefWidth="260.0" spacing="15.0" style="-fx-background-color: #07164A;">
          <children>
             <Button mnemonicParsing="false" onAction="#button0" prefHeight="410.0" prefWidth="40.0" style="-fx-background-radius: 2 2 2 20;" text="0">
                <font>
@@ -136,15 +160,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutX="50.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonEquals" prefHeight="410.0" prefWidth="40.0" style="-fx-background-color: green;" text="=" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button layoutX="90.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonMinus" prefHeight="410.0" prefWidth="40.0" style="-fx-background-color: orange; -fx-background-radius: 2 2 20 2;" text="-" textFill="WHITE">
+            <Button layoutX="50.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonEquals" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: green; -fx-background-radius: 2 2 20 2;" text="=" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -154,9 +170,9 @@
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="21.0" layoutY="14.0" prefHeight="73.0" prefWidth="205.0" spacing="10.0">
+      <VBox layoutX="21.0" layoutY="14.0" prefHeight="73.0" prefWidth="260.0" spacing="10.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox prefHeight="100.0" prefWidth="260.0" spacing="5.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#exitCalculator" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: red; -fx-background-radius: 10; -fx-padding: 0px;">
                      <font>
@@ -171,13 +187,13 @@
             </TextField>
          </children>
       </VBox>
-      <Button layoutX="159.0" layoutY="101.0" mnemonicParsing="false" onAction="#buttonClear" prefHeight="28.0" prefWidth="67.0" style="-fx-background-color: orange; -fx-background-radius: 10 10 2 10;" text="CE" textFill="WHITE">
+      <Button layoutX="186.0" layoutY="98.0" mnemonicParsing="false" onAction="#buttonClear" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: orange; -fx-background-radius: 10 10 2 10;" text="CE" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <ListView fx:id="listView" layoutX="256.0" layoutY="12.0" prefHeight="283.0" prefWidth="200.0" style="-fx-background-radius: 10;" />
-      <Button fx:id="loadButton" layoutX="327.0" layoutY="307.0" mnemonicParsing="false" onAction="#load" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
+      <ListView fx:id="listView" layoutX="297.0" layoutY="16.0" prefHeight="283.0" prefWidth="450.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="loadButton" layoutX="493.0" layoutY="307.0" mnemonicParsing="false" onAction="#load" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange;" text="Load" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -185,7 +201,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="saveButton" layoutX="397.0" layoutY="307.0" mnemonicParsing="false" onAction="#save" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
+      <Button fx:id="saveButton" layoutX="563.0" layoutY="307.0" mnemonicParsing="false" onAction="#save" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 2 5 20 2;" text="Save" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -193,7 +209,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" layoutX="256.0" layoutY="307.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 5 2 2 20;" text="Clear" textFill="WHITE">
+      <Button fx:id="clearButton" layoutX="423.0" layoutY="307.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: orange; -fx-background-radius: 5 2 2 20;" text="Clear" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
