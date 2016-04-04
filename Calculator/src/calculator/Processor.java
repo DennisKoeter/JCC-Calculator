@@ -188,7 +188,7 @@ public class Processor {
         private static double root(String input)
         {
             int root = input.indexOf('v');
-            return Math.pow(Double.parseDouble(input.substring(0, root)), 1 / Double.parseDouble(input.substring(root + 1)));
+            return Math.pow(Double.parseDouble(input.substring(root + 1)), 1 / Double.parseDouble(input.substring(0, root)));
         }
         
         private static double power(String input)
